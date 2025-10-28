@@ -2,13 +2,13 @@
 const fullMusicData = {
     "Corridos": [
         { name: "El Tigrillo Palma", verified: true, imgSrc: "Tigrillo-Palma.jpg", songs: [
-            { title: "El Bazucazo", duration: "3:45", audioSrc: "El Tigrillo Palma - El Bazucazo.mp3", imgSrc: "c-elbazucazo.jpg" },
-            { title: "El 24", duration: "2:32", audioSrc: "El Tigrillo - El 24.mp3", imgSrc: "c-el24.jpg" },
-            { title: "Se Vale Soñar", duration: "3:45", audioSrc: "El Tigrillo Palma - Se Vale Soñar.mp3", imgSrc: "c-sevalesoñar.jpg" },
-            { title: "Tu Nuevo Cariñito", duration: "3:05", audioSrc: "El Tigrillo - Tu Nuevo Cariñito.mp3", imgSrc: "c-tunuevocariñito.jpg" },
-            { title: "La Piedrecita", duration: "2:34", audioSrc: "Tigrillo - La Piedrecita.mp3", imgSrc: "c-tigrillorandom.jpg" },
-            { title: "El Corrido Del Chapo", duration: "3:45", audioSrc: "Tigrillo - El Corrido Del Chapo.mp3", imgSrc: "c-tigrillorandom.jpg" },
-            { title: "El Güero Pesado", duration: "3:31", audioSrc: "Tigrillo - El Guero Pesado.mp3", imgSrc: "c-tigrillorandom2.jpg" },
+            { title: "El Bazucazo", artist: "Tigrillo Palma ", duration: "2:32", audioSrc: "El Tigrillo Palma - El Bazucazo.mp3", imgSrc: "c-elbazucazo.jpg", genre: "CORRIDOS" },
+            { title: "El 24", artist: "Tigrillo Palma ", duration: "2:32", audioSrc: "El Tigrillo - El 24.mp3", imgSrc: "c-el24.jpg", genre: "CORRIDOS" },
+            { title: "Se Vale Soñar", artist: "Tigrillo Palma ", duration: "3:45", audioSrc: "El Tigrillo Palma - Se Vale Soñar.mp3", imgSrc: "c-sevalesoñar.jpg", genre: "CORRIDOS" },
+            { title: "Tu Nuevo Cariñito", artist: "Tigrillo Palma ", duration: "3:05", audioSrc: "El Tigrillo - Tu Nuevo Cariñito.mp3", imgSrc: "c-tunuevocariñito.jpg", genre: "CORRIDOS" },
+            { title: "La Piedrecita", artist: "Tigrillo Palma ", duration: "2:34", audioSrc: "Tigrillo - La Piedrecita.mp3", imgSrc: "c-tigrillorandom.jpg", genre: "CORRIDOS" },
+            { title: "El Corrido Del Chapo", artist: "Tigrillo Palma ", duration: "2:46", audioSrc: "Tigrillo - El Corrido Del Chapo.mp3", imgSrc: "c-tigrillorandom.jpg", genre: "CORRIDOS" },
+            { title: "El Güero Pesado", artist: "Tigrillo Palma ", duration: "3:32", audioSrc: "Tigrillo - El Guero Pesado.mp3", imgSrc: "c-tigrillorandom2.jpg", genre: "CORRIDOS" },
             { title: "Paloma Azul", duration: "3:48", audioSrc: "Tigrillo - Paloma Azul.mp3", imgSrc: "c-el24.jpg" },
             { title: "Los Chiquinarcos", duration: "2:39", audioSrc: "Tigrillo - Los Chiquinarcos.mp3", imgSrc: "c-tigrillorandom.jpg" },
             { title: "La Tetona", duration: "2:39", audioSrc: "Tigrillo - La Tetona.mp3", imgSrc: "c-tigrillorandom2.jpg" },
@@ -20,6 +20,8 @@ const fullMusicData = {
             { title: "El Amor De Un Pobre", duration: "3:45", audioSrc: "Tigrillo - El Amor De Un Pobre.mp3", imgSrc: "c-tigrillorandom3.jpg" },
             { title: "El Licenciado", duration: "3:45", audioSrc: "Tigrillo - El Licenciado.mp3", imgSrc: "c-tigrillorandom.jpg" },
             { title: "Y Andale", duration: "3:45", audioSrc: "El Tigrillo Palma - Y Andale.mp3", imgSrc: "c-tigrillorandom2.jpg" },
+            { title: "iMusic Pro", artist: "Creado por Juan Zamora", audioSrc: "musica-de-prueba.mp3", imgSrc: "caratula-prueba.jpg", genre: "Pop" },
+             { title: "iMusic Pro2", artist: "Creado por Juan Zamora", audioSrc: "musica-de-prueba.mp3", imgSrc: "caratula-prueba.jpg", genre: "Pop" },
             { title: "El Bazucazo", duration: "3:45", audioSrc: "El Tigrillo Palma - El Bazucazo.mp3", imgSrc: "c-elbazucazo.jpg" },
              { title: "El Bazucazo", duration: "3:45", audioSrc: "El Tigrillo Palma - El Bazucazo.mp3", imgSrc: "c-elbazucazo.jpg" },
              { title: "El Bazucazo", duration: "3:45", audioSrc: "El Tigrillo Palma - El Bazucazo.mp3", imgSrc: "c-elbazucazo.jpg" }
@@ -163,7 +165,7 @@ let originalPlaylist = [];
 let favoritesList = []; // Lista para almacenar las canciones favoritas
 
 const initialPlaylist = [
-    { title: "Pista de Introducción", artist: "Músico Ejemplo A", audioSrc: "musica-de-prueba.mp3", imgSrc: "caratula-prueba.jpg", genre: "Pop" }
+    { title: "iMusic Pro", artist: "Creado por Juan Zamora", audioSrc: "Cancion-Inicial.mp3", imgSrc: "foto-inicial.png", genre: "Pop" }
 ];
 originalPlaylist = initialPlaylist;
 currentPlaylist = [...initialPlaylist]; 
@@ -683,7 +685,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Botón Agregar Música (WhatsApp)
     addMusicBtn.addEventListener('click', () => {
-        window.open('https://wa.me/5215512345678?text=Hola! Me gustaría sugerir música para agregar a iMusic.', '_blank');
+        window.open('https://wa.me/5217719624236?text=Hola! Me gustaría sugerir música para agregar a iMusic.', '_blank');
     });
 });
 
@@ -739,4 +741,3 @@ document.getElementById('fullHeart').addEventListener('click', handleLike);
 document.getElementById('miniHeart').addEventListener('click', handleLike);
 document.getElementById('shuffleBtn').addEventListener('click', () => toggleShuffle());
 document.getElementById('repeatBtn').addEventListener('click', () => toggleRepeat());
-
