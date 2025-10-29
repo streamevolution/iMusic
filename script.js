@@ -209,6 +209,7 @@ const genreColors = {
 const loginView = document.getElementById('loginView'); 
 const loginForm = document.getElementById('loginForm'); 
 const loginMessage = document.getElementById('loginMessage'); 
+const createUserBtn = document.getElementById('createUserBtn'); 
 
 const fullPlayer = document.getElementById('fullPlayer');
 const miniPlayer = document.getElementById('miniPlayer');
@@ -244,7 +245,6 @@ const miniNextBtn = document.getElementById('miniNextBtn');
 const currentTimeEl = document.querySelector('.current-time');
 const durationTimeEl = document.getElementById('durationTime');
 const albumArtEl = document.getElementById('albumArt');
-const miniTitleEl = document.getElementById('miniTitle');
 const mainArtistEl = document.getElementById('mainArtist');
 const miniArtEl = document.getElementById('miniArt');
 const miniArtistEl = document.getElementById('miniArtist');
@@ -308,7 +308,7 @@ function checkFavoriteState() {
      }
 }
 
-// --- LÓGICA DE SESIÓN ---
+// --- LÓGICA DE SESIÓN Y REGISTRO ---
 
 function setSessionState(isLoggedIn, user = null) {
     if (isLoggedIn) {
@@ -317,7 +317,7 @@ function setSessionState(isLoggedIn, user = null) {
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('currentUserId', userId); 
         
-        loadFavorites(userId); // Cargar favoritos para el usuario específico
+        loadFavorites(userId); 
         
         loginView.classList.add('hidden');
         genresView.classList.remove('hidden');
@@ -327,13 +327,12 @@ function setSessionState(isLoggedIn, user = null) {
         loadSong(currentSongIndex, false); 
         renderGenres(); 
     } else {
-        // Cierre de sesión: Limpiar localStorage y vistas
         localStorage.removeItem('isLoggedIn');
         localStorage.removeItem('currentUserId');
         currentUserId = null; 
-        favoritesList = []; // Limpiar lista en RAM
+        favoritesList = []; 
         
-        // Limpiar campos de login y mensaje
+        // Limpiar campos de login y mensaje al cerrar sesión/no autenticado
         document.getElementById('username').value = '';
         document.getElementById('password').value = '';
         loginMessage.textContent = ''; 
@@ -371,6 +370,17 @@ function handleLogin(event) {
         loginMessage.textContent = 'Usuario o contraseña incorrectos. Inténtalo de nuevo.';
         loginMessage.classList.add('error');
     }
+}
+
+function handleRegistrationLink() {
+    // URL de WhatsApp para iniciar conversación con mensaje precargado
+    const waNumber = '5217719624236'; // Número de contacto
+    const waText = encodeURIComponent(
+        `Hola, me gustaría solicitar la creación de una cuenta en iMusic. Mis datos son: [CORREO], [USUARIO], [CONTRASEÑA DESEADA].`
+    );
+    const waLink = `https://wa.me/${waNumber}?text=${waText}`;
+
+    window.open(waLink, '_blank');
 }
 
 function handleLogout() {
@@ -609,7 +619,7 @@ function renderFavoritesModal() {
     let htmlContent = '';
 
     if (favoritesList.length === 0) {
-        htmlContent = `<p class="not-found" style="color:var(--spotify-light-gray);">Aún no tienes canciones favoritas. Toca el corazón en el reproductor para agregarlas.</p>`;
+        htmlContent = `<p style="color:var(--spotify-light-gray);">Aún no tienes canciones favoritas. Toca el corazón en el reproductor para agregarlas.</p>`;
     } else {
         originalPlaylist = favoritesList;
         
@@ -852,9 +862,15 @@ document.addEventListener('DOMContentLoaded', () => {
         setSessionState(false);
     }
     
-    // Inicializar listeners
+    // Inicializar listeners del DOM
+    
     document.getElementById('closeModalBtn').addEventListener('click', closeModal);
+    
     loginForm.addEventListener('submit', handleLogin); 
+
+    // 💥 VINCULACIÓN: El botón "Crear Cuenta" ahora enlaza directamente a WhatsApp
+    document.getElementById('createUserBtn').addEventListener('click', handleRegistrationLink); 
+
 
     searchInput.addEventListener('input', (e) => handleSearch(e.target.value));
     
@@ -925,3 +941,4 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('shuffleBtn').addEventListener('click', () => toggleShuffle());
     document.getElementById('repeatBtn').addEventListener('click', () => toggleRepeat());
 });
+
